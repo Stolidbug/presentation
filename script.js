@@ -1,3 +1,4 @@
 const slideshow = remark.create({
-    sourceUrl: './slides.md'
+    sourceUrl: './slides.md',
+    ratio: '16:9',
 });

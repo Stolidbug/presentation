@@ -23,35 +23,38 @@
 
    
 ---
-
+class: center, middle
 ### Introduction :
-
-- **Importance de la Gestion des Assets** :
-    - La gestion des assets est cruciale car elle impacte non seulement la performance et la vitesse de chargement des
+---
+class: center, middle
+#### Importance de la Gestion des Assets :
+    La gestion des assets est cruciale car elle impacte non seulement la performance et la vitesse de chargement des
       pages, mais aussi l'expérience utilisateur. Un mauvais management des assets peut entraîner des temps de
       chargement plus longs, des erreurs de rendu et une maintenance plus difficile.
 
 ---
-
-- **Webpack Encore** :
-    - C'est une interface pour Webpack spécialement conçue pour Symfony, qui permet de gérer les assets de votre projet,
+class: center, middle
+#### Webpack Encore :
+    C'est une interface pour Webpack spécialement conçue pour Symfony, qui permet de gérer les assets de votre projet,
       comme les fichiers JavaScript, les feuilles de style CSS et les images. Il automatise le processus de compilation,
       de minification et d'autres tâches nécessaires pour préparer ces assets pour la production .
 
 ---
-
-- **Asset Mapper de Symfony** :
-    - C'est une nouvelle composante introduite dans Symfony 6.3 comme une fonctionnalité expérimentale. Elle permet une
-      gestion simplifiée des assets, en éliminant la nécessité d'un bundler complexe. Elle exploite les fonctionnalités
+class: center, middle
+#### Asset Mapper de Symfony :
+    C'est un nouveau composant introduit dans Symfony 6.3 comme une fonctionnalité expérimentale. Il permet une
+      gestion simplifiée des assets, en éliminant la nécessité d'un bundler complexe. Il exploite les fonctionnalités
       modernes des navigateurs pour gérer les assets directement sans avoir besoin d'un système de build
       supplémentaire .
 
 ---
+class: center, middle
 
 ### Webpack Encore :
-
-- **Minification des fichiers** :
-    - La minification est le processus de suppression ou de réduction des données inutiles dans un fichier, sans
+---
+class: center, middle
+#### Minification des fichiers :
+    La minification est le processus de suppression ou de réduction des données inutiles dans un fichier, sans
       affecter la façon dont le navigateur le traite. Cela inclut la suppression des espaces blancs, des commentaires,
       et la réduction des noms de variables, ce qui diminue la taille du fichier et améliore les temps de chargement des
       pages.
@@ -60,31 +63,28 @@
 
 ### Exemple de Minification :
 
-    - Avant la minification, votre fichier `app.js` (500KB) pourrait ressembler à ceci :
+    - code expansé, `app.js` (500KB) :
 
 ```javascript
-        function sayHello() {
-    console.log('Hello World!');
+    function sayHello() {
+        console.log('Hello World!');
 }
 
 sayHello();
 ```
 
-    - Après la minification avec Webpack Encore (200KB), il pourrait ressembler à ceci :
+    - minifié `app.js` (200KB) :
 
 ```javascript
-        function sayHello() {
-    console.log('Hello World!')
-}
-
-sayHello();
+    function sayHello(){console.log('Hello World!')}sayHello();
 ```
+
 
 ---
+class: center, middle
+#### Pré-processing Sass/LESS :
 
-- **Pré-processing Sass/LESS** :
-
-    - Sass et LESS sont des préprocesseurs CSS qui permettent d'écrire des styles avec plus de fonctionnalités comme les
+    Sass et LESS sont des préprocesseurs CSS qui permettent d'écrire des styles avec plus de fonctionnalités comme les
       variables et les fonctions. Webpack Encore peut compiler ces fichiers en CSS standard que les navigateurs peuvent
       interpréter.
 
@@ -92,28 +92,39 @@ sayHello();
 
 ### Exemple de Pré-processing Sass/LESS :
 
-- Fichier source : `style.scss`
+**Fichier source Sass (`style.scss`):**
 
 ```scss
-        $font-size: 16px;
-            body {
-              font-size: $font-size;
-            }
-```
+$font-size: 16px;
+$primary-color: #333;
 
-- Fichier compilé : `style.css`
+@mixin theme($color) {
+  color: $color;
+  background-color: lighten($color, 40%);
+}
 
-```css
-        body {
-    font-size: 16px;
+body {
+  font-size: $font-size;
+  @include theme($primary-color);
 }
 ```
 
 ---
 
-- **Support pour React, Vue.js** :
-  - Webpack Encore facilite l'intégration de frameworks populaires comme React ou Vue.js dans votre projet Symfony, en
-    gérant la configuration nécessaire pour compiler et servir ces assets.
+**Fichier compilé CSS (`style.css`):**
+
+```css
+body {
+  font-size: 16px;
+  color: #333;
+  background-color: #f2f2f2;
+}
+```
+---
+class: center, middle
+#### Support pour React, Vue.js :
+    Webpack Encore simplifie l'intégration de frameworks populaires comme React ou Vue.js dans votre projet Symfony, en
+        gérant la configuration nécessaire pour compiler et servir ces assets.
 
 ---
 
@@ -133,20 +144,23 @@ sayHello();
      ```
 
 ---
+class: center, middle
 
-- **Hot Module Replacement (HMR)** :
+#### Hot Module Replacement (HMR) :
 
-    - Le Hot Module Replacement est une fonctionnalité qui permet de remplacer, ajouter, ou supprimer des modules tout
-      en l'application s'exécute, sans nécessité de rafraîchir la page entière. Cela permet une mise au point plus
-      rapide en économisant du temps qui aurait été perdu dans le rechargement de la page.
+    Le Hot Module Replacement est une fonctionnalité qui permet de remplacer, ajouter, ou supprimer des modules tout
+    en l'application s'exécute, sans nécessité de rafraîchir la page entière. Cela permet une mise au point plus
+    rapide en économisant du temps qui aurait été perdu dans le rechargement de la page.
 
 ---
+class: center, middle
+### Asset Mapper de Symfony
 
-### Asset Mapper de Symfony :
+---
+class: center, middle
+### Exposition des répertoires d'assets :
 
-- **Exposition des répertoires d'assets** :
-
-    - L'Asset Mapper permet d'exposer des répertoires d'assets en les déplaçant vers un répertoire public, tout en
+    L'Asset Mapper permet d'exposer des répertoires d'assets en les déplaçant vers un répertoire public, tout en
       versionnant les noms de fichiers pour éviter les problèmes de cache.
 
 ---
@@ -161,10 +175,10 @@ sayHello();
  ```
 
 ---
+class: center, middle
+#### Cartographie et Versioning des Assets:
 
-- **Cartographie et Versioning des Assets**:
-
-  - Il identifie et rend accessible publiquement les fichiers dans un répertoire spécifié, comme `assets/`, et versionne ces fichiers pour garantir que les versions les plus récentes sont servies aux utilisateurs .
+Il identifie et rend accessible publiquement les fichiers dans un répertoire spécifié, comme `assets/`, et versionne ces fichiers pour garantir que les versions les plus récentes sont servies aux utilisateurs .
 ---
 
 ### Exemple de Cartographie et Versioning des Assets :
@@ -175,12 +189,12 @@ sayHello();
 ```
 
 ---
+class: center, middle
+#### Importmaps:
 
-- **Importmaps**:
-
-  - Les Importmaps sont une fonctionnalité de navigateur qui simplifie l'utilisation de l'instruction import en
-    JavaScript, permettant d'importer des modules sans nécessiter un système de build. L'Asset Mapper peut générer une
-    Importmap pour votre projet, facilitant ainsi la gestion des dépendances JavaScript .
+    Les Importmaps sont une fonctionnalité de navigateur qui simplifie l'utilisation de l'instruction import en
+        JavaScript, permettant d'importer des modules sans nécessiter un système de build. L'Asset Mapper peut générer une
+        Importmap pour votre projet, facilitant ainsi la gestion des dépendances JavaScript .
 
 ---
 
@@ -195,65 +209,38 @@ sayHello();
 ```
 
 ---
-
+class: center, middle
 ### Comparaison et Motivation pour le Changement :
 
-- **Simplicité de l'Asset Mapper** :
-    - Avec l'Asset Mapper, la configuration est simplifiée et le processus de gestion des assets est plus direct, ce qui
+#### Simplicité de l'Asset Mapper :
+    Avec l'Asset Mapper, la configuration est simplifiée et le processus de gestion des assets est plus direct, ce qui
       peut accélérer le développement et réduire la courbe d'apprentissage pour les nouveaux membres de l'équipe.
 
-
-- **Modernité de l'Asset Mapper** :
-    - L'Asset Mapper tire parti des fonctionnalités modernes des navigateurs, comme l'instruction `import` native en
+---
+class: center, middle
+#### Modernité de l'Asset Mapper :
+    L'Asset Mapper tire parti des fonctionnalités modernes des navigateurs, comme l'instruction `import` native en
       JavaScript, ce qui permet d'écrire du code plus moderne sans la complexité supplémentaire d'un bundler.
 
 ---
-
+class: center, middle
 ### Conclusion : Points Positifs et Négatifs
-
-**Webpack Encore** :
-
-**Points Positifs** :
-
-1. **Polyvalence** : Adapté pour des projets complexes avec des besoins variés en matière de gestion des assets.
-2. **Préprocesseurs CSS et Frameworks JS** : Support intégré pour les préprocesseurs CSS et frameworks JavaScript
-   modernes.
-3. **Hot Module Replacement (HMR)** : Accélère le développement en permettant des mises à jour en temps réel sans
-   rechargement complet de la page.
-
-**Points Négatifs** :
-
-1. **Complexité** : Peut devenir complexe, surtout pour ceux qui ne sont pas familiers avec Webpack.
-2. **Courbe d'Apprentissage** : Requiert un certain temps d'apprentissage pour une utilisation efficace.
+---
+class: center, middle
+#### Webpack Encore :
+👍 Polyvalence, support pour préprocesseurs CSS et frameworks JS, HMR.<br>
+👎 Complexité et courbe d'apprentissage.
 
 ---
-
-**Asset Mapper de Symfony** :
-
-**Points Positifs** :
-
-1. **Simplicité** : Facile à configurer et à utiliser, idéal pour des projets moins complexes.
-2. **Modernité** : Exploite les fonctionnalités modernes des navigateurs, permettant un code plus propre et plus
-   moderne.
-3. **Configuration Minimaliste** : Accélère le développement en réduisant la nécessité de configuration.
-
-**Points Négatifs** :
-
-1. **Fonctionnalités Limitées** : Moins de fonctionnalités par rapport à Webpack Encore, peut ne pas convenir aux
-   projets avec des besoins de gestion des assets plus complexes.
-2. **Statut Expérimental** : Étant une fonctionnalité expérimentale, il pourrait y avoir des changements futurs ou moins
-   de support de la communauté.
+class: center, middle
+#### Asset Mapper de Symfony :
+👍 Simplicité, modernité, configuration minimale.<br>
+👎 Fonctionnalités limitées, statut expérimental.
 
 ---
-
+class: center, middle
 ### Recommandations :
 
-- **Pour les Projets Complexes** : Si votre projet a des besoins complexes en matière de gestion des assets, ou si vous
-  avez déjà une configuration bien établie avec Webpack Encore, il pourrait être bénéfique de continuer à l'utiliser.
+Choisissez Webpack Encore pour des projets complexes ou continuez son utilisation si déjà en place. Considérez l'Asset Mapper pour des projets nouveaux ou moins complexes, en tenant compte des ressources d'apprentissage et du support de la communauté.
 
-- **Pour les Nouveaux Projets ou Projets Simples** : Si vous commencez un nouveau projet, ou si votre projet est moins
-  complexe, envisagez d'expérimenter avec l'Asset Mapper de Symfony pour simplifier la gestion des assets et accélérer
-  le développement.
 
-- **Formation et Support de la Communauté** : Évaluez également la disponibilité des ressources d'apprentissage et le
-  support de la communauté pour chacun des outils, cela peut influencer votre décision.
